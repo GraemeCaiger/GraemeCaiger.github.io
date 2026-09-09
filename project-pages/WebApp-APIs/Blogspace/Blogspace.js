@@ -49,7 +49,7 @@ async function askGemini() {
     const loadingIcon = document.getElementById("loadingIcon");
 
     if (!API_KEY) {
-        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key";
+        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key to use the LLM";
         return;
     }
 

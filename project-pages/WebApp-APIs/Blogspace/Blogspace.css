@@ -1,0 +1,38 @@
+body {
+    font-family: 'Karla', sans-serif;   /* Google font imported in HTML head section */
+    padding: 0;
+    margin: 0;
+}
+
+nav { 
+    background-color: beige; /* fallback for old browsers */
+    padding: 5px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    width : 100%;
+}
+
+nav > h1 {
+    margin: 0;
+    font-size: 50px;
+}
+
+#Feed {
+    padding: 0px 30px 10px;   /* top, left and right, bottom  */  
+}
+
+#UserIN {
+    padding: 15px 30px 10px;   /* top, left and right, bottom  */  
+    display:grid;
+    background-color: lightblue; /* light gray background for the input section */
+}
+
+input#post-title, textarea#post-body {
+    margin-bottom: 10px;
+}
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}

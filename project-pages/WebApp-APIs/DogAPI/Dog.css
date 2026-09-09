@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 10px;
+}
+
+body {
+    /* CSS generated from https://uigradients.com */
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: "Oxygen", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+button {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid darkred;
+    cursor: pointer;
+}
+
+/* Container for dog images - expands downwards only */ /* describes purpose of this block */
+#DogContainer { /* select element with id 'DogContainer' */
+    display: flex; /* enable flexbox layout for children */
+    flex-direction: column;  /* stack children vertically so the container expands downward */
+    align-items: center; /* horizontally center children within the column */
+    flex-grow: 1; /* allow this container to grow and fill available space */
+    overflow-y: auto; /* enable vertical scrollbar when content overflows */
+} /* end of #DogContainer rules */
+
+
+

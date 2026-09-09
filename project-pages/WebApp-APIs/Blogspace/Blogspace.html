@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;400;700&display=swap"  <!--Note Getting google fonts comes before css so it can be used within -->
+        <link rel="stylesheet" href="Blogspace.css">
+        <script src="config.js"></script>  <!--GEMINI API KEY. Just to add a little bit of goofy fun to the project Must be Re-Added For blogslop to work-->
+    </head>
+    <body>
+        <nav>
+            <h1>Blogspace</h1>
+        </nav>
+        <a href="../index.html" style="margin-top: 10px; display: block;">Return to Index</a>
+        <hr>
+        <div id="UserIN">
+            <input type="text" id="title" placeholder="Title" style="margin-top: 10px; display: block;">
+            <textarea id="content" placeholder="Content" style="margin-top: 10px; display: block;"></textarea>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button id="Submit">Post</button>
+                <button onclick="askGemini()">Post BlogSlop!</button>
+                <p id="loadingIcon"></p>
+            </div>
+        </div>
+
+        <div id="Feed">
+        </div>
+        <script src="Blogspace.js"></script>
+    </body>
+</html>

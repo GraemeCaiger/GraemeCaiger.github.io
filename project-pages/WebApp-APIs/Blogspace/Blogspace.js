@@ -102,7 +102,7 @@ async function askGemini() {
     const data = await response.json();
 
     if (!response.ok || !data.candidates?.[0]?.content?.parts?.[0]?.text) {
-        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key";
+        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key to use the LLM";
         return;
     }
 

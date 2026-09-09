@@ -42,16 +42,10 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 
 
 /* Silly Expansion for funzies */
-const API_KEY = typeof GEMINI_API_KEY === "string" ? GEMINI_API_KEY.trim() : ""; // Loaded from a file that is ignored by git.
-console.log(API_KEY) // Just to show that the key is being loaded correctly.
+let API_KEY = typeof GEMINI_API_KEY === "string" ? GEMINI_API_KEY.trim() : ""; // Loaded from a file that is ignored by git.
 
 async function askGemini() {
     const loadingIcon = document.getElementById("loadingIcon");
-
-    if (!API_KEY) {
-        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key to use the LLM";
-        return;
-    }
 
     loadingIcon.innerHTML = "Loading...";
     const Topic = {
@@ -71,15 +65,13 @@ async function askGemini() {
     }
     TopicSelection = Topic[Math.floor(Math.random() * 13) + 1]
     console.log("Asking Gemini for some blogslop for the topic of " + TopicSelection + "...")
-    let response;
-    try {
-        response = await fetch(
+    const requestPost = apiKey => fetch(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
         {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-goog-api-key": API_KEY
+                "x-goog-api-key": apiKey
             },
             body: JSON.stringify({
                 contents: [
@@ -93,10 +85,27 @@ async function askGemini() {
                 ]
             })
         }
-        );
+    );
+
+    let response;
+    try {
+        // Try the key loaded from the ignored file first.
+        response = await requestPost(API_KEY);
+        if (!response.ok) throw new Error("Loaded API key was rejected.");
     } catch (error) {
-        loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key to use the LLM";
-        return;
+        // Prompt only when the file key is unavailable or fails.
+        API_KEY = window.prompt("Enter your Gemini API key to generate a blog post:")?.trim() || "";
+        if (!API_KEY) {
+            loadingIcon.innerHTML = "A Gemini API key is required to generate a blog post.";
+            return;
+        }
+
+        try {
+            response = await requestPost(API_KEY);
+        } catch (retryError) {
+            loadingIcon.innerHTML = "This functionality is disabled as you need to supply your own API key to use the LLM";
+            return;
+        }
     }
 
     const data = await response.json();

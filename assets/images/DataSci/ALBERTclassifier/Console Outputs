@@ -1,0 +1,243 @@
+Non Guncrime : 0  ,  Guncrime :1 
+data contains...         
+0    67
+1    41
+Name: label, dtype: int64
+0 = Non guncrime         
+ 1 = Guncrime 
+Top 20 overrepresented terms for true positive (Guncrimes) in the dataset:
+           term  difference
+850     summary    0.043661
+757        shot    0.029644
+446       known    0.023362
+941      vendor    0.022844
+530      noodle    0.021750
+632      pulled    0.020307
+465         man    0.019489
+609      police    0.019073
+754    shooting    0.018266
+857     suspect    0.017495
+724       scene    0.016767
+884  threatened    0.016405
+355     dispute    0.016044
+948      victim    0.015624
+418     handgun    0.015513
+377     firearm    0.015050
+543     officer    0.014433
+177     balloon    0.014195
+147    argument    0.013994
+464        male    0.013427
+
+
+Top 20 overrepresented terms for true negatives (Non Guncrimes) in the dataset:
+             term  difference
+444          just    0.019872
+577            pc    0.015277
+263        called    0.013387
+670       reports    0.011697
+194         begun    0.009426
+438  investigated    0.009290
+407       gunfire    0.009278
+286       causing    0.008710
+882       thought    0.008537
+676     responded    0.008471
+234       bonfire    0.008285
+380      fireweed    0.008156
+496       mistook    0.008108
+459          loud    0.007950
+360            ds    0.007734
+505            mr    0.007680
+111        actual    0.007593
+293       checked    0.007177
+503      moonshot    0.007016
+647          rare    0.006849
+
+
+                                                text  label
+0  Case 599 - The Noodle Nuisance: Officer: Capt....      1
+1  Case 600 - The Balloon Animal Brawl: Officer: ...      1
+2  Case 328 - PC Buckle responded to a minor comm...      0
+3  Case 461 - DS Giggles responded to a call invo...      0
+4  Case 572 - Sgt. Flutter was called in after Ms...      0
+Checking Data formatting...
+                                                text  label
+0  Case 922 - Davy jones was aproached on his ves...      1
+1  Case 221 -  officers arrived at a residence on...      1
+2  Case 572 - Sgt. Flutter was called in after Ms...      0
+3  Case 446- At 8:10 PM officers responded to a c...      1
+4  Case 432 - Officer Scribbles investigated a di...      0
+                                                text  label
+0  Case 592 - The Pie-Throwing Incident: Officer:...      1
+1  Case 595 - The Sassy Salsa Shootout: Officer: ...      1
+2  Case 992 - PC Fudge arrested Simon McFizz, who...      0
+3  Case 252 - PC Dabble checked a caf� after comp...      0
+4  Case 739 - PC Snoop investigated a plant enthu...      0
+Splitting dataset...
+The training dataset size is :(86, 2)
+The test dataset size is (22, 2)
+
+Cuda Avalible on system? : False
+
+STARTING EVALUATION...
+
+C:\Users\Graham\AppData\Roaming\Python\Python39\site-packages\simpletransformers\classification\classification_model.py:1453: UserWarning: Dataframe headers not specified. Falling back to using column 0 as text and column 1 as labels.
+  warnings.warn(
+INFO:simpletransformers.classification.classification_utils: Converting to features started. Cache is not used.
+1it [00:45, 45.94s/it]
+INFO:simpletransformers.classification.classification_utils: Saving features into cached file cache_dir/cached_dev_albert_128_2_2
+Running Evaluation: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:13<00:00, 13.75s/it]
+
+EVALUATION
+-------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+         0.0       0.92      1.00      0.96        11
+         1.0       1.00      0.91      0.95        11
+
+    accuracy                           0.95        22
+   macro avg       0.96      0.95      0.95        22
+weighted avg       0.96      0.95      0.95        22
+
+-- Confusion Matrix
+    0   1
+0  11   0
+1   1  10
+Generating Matplotlib Confusion matrix...
+the raw model outputs are...
+[[-2.17697573  1.20091879]
+ [-2.10922599  1.25829339]
+ [ 2.69462705 -1.78761935]
+ [ 2.73179841 -1.75569093]
+ [ 2.7325027  -1.78049684]
+ [ 2.75346541 -1.76922131]
+ [ 2.7729156  -1.75393391]
+ [-2.16056037  1.24307346]
+ [ 2.76450992 -1.78950667]
+ [-2.20126843  1.22836733]
+ [-1.85406542  0.59019244]
+ [-2.01061678  1.02076304]
+ [ 2.76270795 -1.76834142]
+ [ 2.61223602 -1.75405657]
+ [ 2.72225595 -1.81114256]
+ [ 2.71438479 -1.77816629]
+ [-1.88115013  0.82762235]
+ [-2.16193748  1.24672627]
+ [ 2.75500226 -1.77983165]
+ [-1.87348187  0.99653149]
+ [ 2.34941125 -1.52309537]
+ [-2.2089715   1.18243563]]
+
+Top 20 Most likely Guncrimes acording to ALBERT 
+------------------------------------------------------------------------------------------------------
+                                                 text  label  Gun_Activation Prediction  Predicted_labels
+1   Case 595 - The Sassy Salsa Shootout: Officer: ...      1        1.258293   Guncrime                 1
+17  Case 597 - The Gumball Gang Shootout: Officer:...      1        1.246726   Guncrime                 1
+7   Case 610 - The Cheesy Confrontation: Officer: ...      1        1.243073   Guncrime                 1
+9   Case 590 - The Hamburglar Hit: Officer: Lt. Ch...      1        1.228367   Guncrime                 1
+0   Case 592 - The Pie-Throwing Incident: Officer:...      1        1.200919   Guncrime                 1
+21  Case 593 - The Taco Tragedy: Officer: Capt. Sa...      1        1.182436   Guncrime                 1
+11  Case 922 - A caller at 20:15 reported sounds o...      1        1.020763   Guncrime                 1
+19  Case 442 - Officer Yuppy Responded to a distre...      1        0.996531   Guncrime                 1
+16  Case 221 - A man simply known as the medic was...      1        0.827622   Guncrime                 1
+10  Case 225 - Officer wibblewobble responding to ...      1        0.590192   Guncrime                 1
+20  Case 999 - a man known as Raz Ric entered a st...      1       -1.523095      NonGC                 0
+6   Case 328 - PC Buckle responded to a minor comm...      0       -1.753934      NonGC                 0
+13  Case 673 - DS Marge Mayhem investigated incide...      0       -1.754057      NonGC                 0
+3   Case 252 - PC Dabble checked a caf� after comp...      0       -1.755691      NonGC                 0
+12  Case 915 - PC Blink responded to the Sunflower...      0       -1.768341      NonGC                 0
+5   Case 159 - Officer Doodle was called to the ma...      0       -1.769221      NonGC                 0
+15  Case 348 - Officer Hobbs responded to a call a...      0       -1.778166      NonGC                 0
+18  Case 063 - Sgt. Crank responded to complaints ...      0       -1.779832      NonGC                 0
+4   Case 739 - PC Snoop investigated a plant enthu...      0       -1.780497      NonGC                 0
+2   Case 992 - PC Fudge arrested Simon McFizz, who...      0       -1.787619      NonGC                 0
+
+ TFIDF ANALYSIS
+-------------------------------------------------------------------
+
+Top 20 overrepresented Keywords for true positives in the evaluation set :
+           term  difference
+322     summary    0.036570
+326        taco    0.026893
+252         pie    0.025787
+289       salsa    0.024917
+235     officer    0.024433
+301        shot    0.024369
+262      pulled    0.023698
+257      police    0.023414
+299    shooting    0.023068
+99    constable    0.022841
+294       scene    0.021115
+167  hamburglar    0.020578
+86       cheese    0.020561
+266         raz    0.019984
+145     firearm    0.019807
+208         man    0.019552
+191       known    0.019552
+159     gumball    0.019448
+256    pointing    0.019030
+42      attempt    0.017370
+
+
+
+ Top Keywords overrepresented in predictions compared to true labels:
+           term  difference
+235     officer    0.007424
+322     summary    0.007314
+301        shot    0.006140
+326        taco    0.005379
+252         pie    0.005157
+289       salsa    0.004983
+257      police    0.004683
+299    shooting    0.004614
+99    constable    0.004568
+294       scene    0.004223
+167  hamburglar    0.004116
+86       cheese    0.004112
+145     firearm    0.003961
+159     gumball    0.003890
+256    pointing    0.003806
+363   witnesses    0.003624
+42      attempt    0.003474
+333    throwing    0.003438
+300    shootout    0.003417
+239     outside    0.003396
+
+Analysing Bag of Words...
+-------------------------------------------------------------------
+
+Top 10 vocabulary for true positives in the data set :
+         term  difference
+1124  summary    0.348013
+1031     shot    0.250452
+817   officer    0.189702
+688     known    0.157182
+1215   vendor    0.136179
+883    police    0.126920
+1131  suspect    0.123532
+731       man    0.121048
+906    pulled    0.121048
+804    noodle    0.121048
+Top 10 vocabulary for true positives in eval_df :
+           term  difference
+817     officer    0.272727
+1124    summary    0.272727
+1031       shot    0.227273
+906      pulled    0.136364
+1137       taco    0.136364
+883      police    0.136364
+348   constable    0.136364
+987       salsa    0.136364
+1028   shooting    0.136364
+998       scene    0.136364
+Top 10 vocabulary differing in predictions vs True positives :
+           term  difference
+817     officer    0.072727
+1031       shot    0.054545
+1124    summary    0.054545
+998       scene    0.027273
+883      police    0.027273
+987       salsa    0.027273
+865         pie    0.027273
+1028   shooting    0.027273
+348   constable    0.027273
+1137       taco    0.027273
